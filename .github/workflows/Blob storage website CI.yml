@@ -13,6 +13,11 @@ jobs:
       with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+    - name: Enable Storage endpoint with Index
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+            az storage blob service-properties update --account-name "jdstorageyghpg6zzaj4uy" --static-website --404-document "error.html" --index-document "index.html"
     - name: Upload to blob storage
       uses: azure/CLI@v1
       with:
