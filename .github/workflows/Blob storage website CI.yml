@@ -21,7 +21,7 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-            az storage blob upload-batch --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} --auth-mode key -d '$web' -s "./html"
+            az storage blob upload-batch --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} --auth-mode key -d '$web' -s "./html" --overwrite
     - name: Create a CDN profile (JD)
       uses: azure/CLI@v1
       with:
