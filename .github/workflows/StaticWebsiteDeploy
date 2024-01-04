@@ -1,11 +1,12 @@
+on: [push]
 name: Upload To Azure
-on: push
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/checkout@master
+      
       - uses: feeloor/azure-static-website-deploy@master
         env:
           SOURCE_DIR: "./html"
