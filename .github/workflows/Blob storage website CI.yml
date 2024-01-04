@@ -17,12 +17,12 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-            az storage blob service-properties update --account-name "jdstorageyghpg6zzaj4uy" --static-website --404-document "error.html" --index-document "index.html"
+            az storage blob service-properties update --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} --static-website --404-document "error.html" --index-document "index.html"
     - name: Upload to blob storage
       uses: azure/CLI@v1
       with:
         inlineScript: |
-            az storage blob upload-batch --account-name "jdstorageyghpg6zzaj4uy" --auth-mode key -d '$web' -s "./html"
+            az storage blob upload-batch --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} --auth-mode key -d '$web' -s "./html"
 #    - name: Purge CDN endpoint
 #      uses: azure/CLI@v1
 #      with:
